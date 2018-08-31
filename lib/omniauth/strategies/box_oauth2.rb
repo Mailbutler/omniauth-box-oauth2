@@ -22,7 +22,11 @@ module OmniAuth
           address: raw_info['address'],
           status: raw_info['status']
         }
-      end 
+      end
+      
+      def callback_url
+        options[:redirect_uri] || (full_host + script_name + callback_path)
+      end
 
       extra do 
         { raw_info: raw_info }
